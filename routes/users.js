@@ -1,4 +1,5 @@
 var express = require('express');
+var qr = require('qr-image');  
 var router = express.Router();
 
 /*
@@ -18,9 +19,10 @@ router.get('/userlist', function(req, res) {
 router.post('/adduser', function(req, res) {
     var db = req.db;
     db.collection('usercollection').insert(req.body, function(err, result){
-        res.send(
-            (err === null) ? { msg: '' } : { msg: err }
-        );
+        console.log(result[0]);
+        var code = qr.image(new Date().toString(), { type: 'png' });
+        res.type('png');
+        code.pipe(res);
     });
 });
 
