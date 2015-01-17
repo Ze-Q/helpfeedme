@@ -20,6 +20,7 @@
     "mongoskin": "*",
     "qr-image": "*",
     "querystring": "*",
-    "request": "*"
+    "request": "*",
+    "serve-favicon": "*"
   }
 }
