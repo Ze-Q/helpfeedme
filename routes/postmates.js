@@ -50,8 +50,13 @@ router.post('/placeorder', function(req, res) {
 
     var user;
 
-    var donor;
-    // get donor from database, process payment. If payment is sucessful, then proceed. Else, return error. 
+    var paid = req.body.paid;
+
+    if( !(paid === "paid") ){ // super maximum ultimate security 
+        res.statusCode = 400;
+        res.end("{'error' : 'not_paid', 'message' : 'The donor did not pay'}")
+        return;
+    } 
 
     db.collection('usercollection').findOne({_id: require('mongoskin').ObjectID(req.body.id)},function (err, item) {
         console.log("the error is :" + err);
@@ -62,7 +67,7 @@ router.post('/placeorder', function(req, res) {
         res.statusCode = 400;
         res.end("{'error' : 'bad_id', 'message' : 'The user id provided is not associated with a user.'}");
         return;
-    };
+    }
 
     message = user.note +"; " + req.body.note;
 
@@ -94,6 +99,8 @@ router.post('/placeorder', function(req, res) {
     request(options, function(error, response, body){
         r = JSON.parse(body);
         if(r.kind === "error"){
+            res.statusCode = 500;
+            console.log(r);
             res.end("ERROR: "+r.code.toString()+'. '+r.message.toString());
         }
         else
