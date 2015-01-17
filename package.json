@@ -16,7 +16,6 @@
     "mongodb": "*",
     "mongoskin": "*",
     "qr-image": "*",
-    "http": "*",
     "querystring": "*",
     "request": "*"
   }
