@@ -112,4 +112,26 @@ router.post('/placeorder', function(req, res) {
 
 });
 
+router.post('/checkstatus', function(req,res){
+
+    var username = 'b057c44b-bfb6-4275-b3ef-a279fdd00fac'; // our postmates account
+    var auth = "Basic " + new Buffer(username + ":").toString("base64");
+
+    var id =  req.body.id;
+
+        options = {
+        url: 'https://api.postmates.com/v1/customers/cus_KAbGWjljT7QI7-/deliveries/'+id,
+        headers: {
+            'Authorization' : auth
+        }
+    }
+
+    request(options, function(error, response, body){ 
+    r = JSON.parse(body);
+    console.log(r);
+    res.end("{ 'status' : '"+r.status.toString()+"' }");
+    });
+
+});
+
 module.exports = router;
