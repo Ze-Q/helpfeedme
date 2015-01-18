@@ -12,6 +12,7 @@ $(document).ready(function() {
             success:function(data, textStatus, jqXHR) 
             {
                 console.log(data);
+                $('#btnSubmit').after('<img src="data:image/png;base64,' + data + '" />');
                 $.notify("Account Creation Successful!", "success");
             },
             error: function(jqXHR, textStatus, errorThrown) 
