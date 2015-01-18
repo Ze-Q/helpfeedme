@@ -21,6 +21,7 @@
     "qr-image": "*",
     "querystring": "*",
     "request": "*",
-    "serve-favicon": "*"
+    "serve-favicon": "*",
+    "pusher": "*"
   }
 }

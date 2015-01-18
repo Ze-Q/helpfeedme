@@ -3,6 +3,19 @@ var qr = require('qr-image');
 var router = express.Router();
 
 /*
+ * Pusher Configuration
+ */
+
+var Pusher = require('pusher');
+
+var pusher = new Pusher({
+  appId: '103545',
+  key: 'eb07bb89a17f04cf3f32',
+  secret: 'cbccf56cde11fe7a53e5'
+});
+
+
+/*
  * GET userlist.
  */
 router.get('/userlist', function(req, res) {
@@ -39,6 +52,17 @@ router.get('/getuser/:id', function(req, res) {
         console.log("the result is :" + item);
         res.json(item);
     });
+});
+
+function postNotification(message) {
+    pusher.trigger('test_channel', 'my_event', {
+        "message": message
+    });
+};
+
+router.get('/testNotification/:message', function(req, res) {
+    var message = req.params.message;
+    postNotification(message);
 });
 
 module.exports = router;
