@@ -20,7 +20,9 @@ router.post('/adduser', function(req, res) {
     var db = req.db;
     db.collection('usercollection').insert(req.body, function(err, result){
         console.log(result[0]);
-        var code = qr.image(result[0]._id, { type: 'png' });
+        var newUser = result[0];
+        console.log(newUser['_id']);
+        var code = qr.image(newUser['_id'].toString(), { type: 'png' });
         res.type('png');
         code.pipe(res);
     });
