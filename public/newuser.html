@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create User</title>
+    <link rel="stylesheet" href="css/site.css">
+  </head>
+  <body>
+    <div class="form-wrap">
+      <form id="formAddUser" name="newuser" method="post" action="/users/adduser">
+        <img class="logo" src="img/Helping-Hand-Logo.svg"/>
+        <input id="inputUserName" type="text" placeholder="Name" name="name">
+        <input id="inputUserPhone" type="text" placeholder="Phone Number" name="phone">
+        <input id="inputUserNote" type="text" placeholder="Special Note" name="note">
+        <button id="btnSubmit" class="join-button" type="submit">submit</button>
+      </form>
+    </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/newuser.js"></script>
+    <script src="realtime-notifications/notify.min.js"></script>
+  </body>
+</html>

@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 
 /* GET create user page */
 router.get('/newuser', function(req, res) {
-  res.render('newuser', { title: 'Create User' });
+  res.sendfile(__dirname + '/public/index.html');
 });
 
 module.exports = router;
