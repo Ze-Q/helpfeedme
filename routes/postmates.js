@@ -129,9 +129,11 @@ router.post('/checkstatus', function(req,res){
     request(options, function(error, response, body){ 
     r = JSON.parse(body);
     console.log(r);
-    res.end("{ 'status' : '"+r.status.toString()+"' }");
+    res.end(querystring.stringify({
+        'status' : r.status.toString(),
+        'fee' : r.fee.toString(),
+        'courier' : r.courier.toString()
+        }));
     });
-
-});
 
 module.exports = router;
