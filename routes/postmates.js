@@ -134,9 +134,8 @@ router.post('/checkstatus', function(req,res){
          'fee' : r.fee.toString(),
          'courier' : 'null'
          }));
-
-
 });
 });
+
 
 module.exports = router;
