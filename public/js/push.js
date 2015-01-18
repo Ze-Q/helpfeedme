@@ -1,3 +1,5 @@
+$('document').ready(function() {
+    
 // Enable pusher logging - don't include this in production
     Pusher.log = function(message) {
       if (window.console && window.console.log) {
@@ -5,8 +7,7 @@
       }
     };
 
-    var pusher = new Pusher('eb07bb89a17f04cf3f32');
+    var pusher = new Pusher('8c762fb5e85551d78c85');
     var channel = pusher.subscribe('test_channel');
-    channel.bind('my_event', function(data) {
-      alert(data.message);
-    });
+    var notifier = new PusherNotifier(channel);
+});

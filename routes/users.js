@@ -9,9 +9,9 @@ var router = express.Router();
 var Pusher = require('pusher');
 
 var pusher = new Pusher({
-  appId: '103545',
-  key: 'eb07bb89a17f04cf3f32',
-  secret: 'cbccf56cde11fe7a53e5'
+  appId: '103547',
+  key: '8c762fb5e85551d78c85',
+  secret: 'ae80b55944e291c09bfa'
 });
 
 
