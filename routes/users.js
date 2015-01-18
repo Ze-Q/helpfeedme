@@ -22,7 +22,7 @@ router.post('/adduser', function(req, res) {
         console.log(result[0]);
         var newUser = result[0];
         console.log(newUser['_id']);
-        var code = qr.image(newUser['_id'].toString(), { type: 'png' });
+        var code = qr.image(newUser['_id'].toString(), { type: 'png', size: 15 });
         res.type('png');
         code.pipe(res);
     });
