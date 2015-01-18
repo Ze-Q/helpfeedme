@@ -3,6 +3,29 @@ var querystring = require('querystring');
 var request = require("request");
 var router = express.Router();
 
+/*
+ * Pusher Configuration
+ */
+
+var Pusher = require('pusher');
+
+var pusher = new Pusher({
+  appId: '103547',
+  key: '8c762fb5e85551d78c85',
+  secret: 'ae80b55944e291c09bfa'
+});
+
+
+function postNotification(message) {
+    pusher.trigger('test_channel', 'my_event', {
+        "message": message
+    });
+};
+
+router.get('/testNotification/:message', function(req, res) {
+    var message = req.params.message;
+    postNotification(message);
+});
 
 /* POST to get a quote for delivery price */
 router.post('/getquote', function(req, res) {
@@ -95,7 +118,7 @@ router.post('/placeorder', function(req, res) {
         },
         form: data
     }
-
+    postNotification("A NEW DONATION!");
     request(options, function(error, response, body){
         r = JSON.parse(body);
         if(r.kind === "error"){
