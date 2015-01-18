@@ -10,6 +10,6 @@ $('document').ready(function() {
     var pusher = new Pusher('8c762fb5e85551d78c85');
     var channel = pusher.subscribe('test_channel');
     channel.bind('my_event', function(data){
-       var notification = new Notification("New Donation!") 
+       $.notify("A new donation just went to a citizen in need!", "success");
     });
 });
