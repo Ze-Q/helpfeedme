@@ -1,2 +1,3 @@
 # helpfeedme
-The winning team of PennApps 2015
+
+http://devpost.com/software/helping-hand
